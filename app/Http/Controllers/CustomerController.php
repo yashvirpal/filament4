@@ -46,7 +46,7 @@ class CustomerController extends Controller
 
         $customer = Customer::findOrFail($customerId);
 
-        return view('detail', compact('customer'));
+        return view('step1', compact('customer'));
     }
     public function loginn(Request $request)
     {

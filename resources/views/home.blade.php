@@ -24,9 +24,7 @@
             Login with your registered mobile number and ticket number
         </p>
 
-        <!-- Alert box -->
-        <div id="alert-box" class="hidden mb-4 text-sm text-center rounded p-2"></div>
-
+         
         <form id="customer-login-form" class="space-y-4">
             @csrf
 
@@ -58,6 +56,10 @@
                 class="btnsubmit w-full bg-indigo-600 text-white rounded-xl py-2 font-semibold hover:bg-indigo-700 transition">
                 Login
             </button>
+
+            <!-- Alert box -->
+            <div id="alert-box" class="hidden mb-4 text-sm text-center rounded p-2">Please wait we are processing your request...</div>
+       
         </form>
     </div>
 
@@ -73,9 +75,13 @@
                     method: "POST",
                     data: formData,
                     beforeSend:function(){
-                        $(".btnsubmit").text('wait...');
+                        $(".btnsubmit").text('Loading...');
                         $(".btnsubmit").css('opacity',0.5);
                         $(".btnsubmit").attr('disabled',true);
+                        $('#alert-box')
+                            .removeClass('hidden bg-red-100 text-red-600 border-red-300')
+                            .addClass('bg-green-100 text-green-700 border-green-300')
+                            .show();
 
                     },
                     success: function(response) {
