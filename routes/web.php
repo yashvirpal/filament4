@@ -5,11 +5,17 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::get('/home', function () {
+use App\Http\Controllers\CustomerController;
+
+// Route::get('/customer-login', [CustomerController::class, 'showLoginForm'])->name('customer.login');
+ Route::post('/customer-login', [CustomerController::class, 'login'])->name('customer.login.submit');
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/', function () {
     return view('home');
 })->name('home');
 
