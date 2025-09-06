@@ -23,30 +23,46 @@ class CustomersTable
                     ->label('Mobile')
                     ->searchable(),
 
-                Tables\Columns\TextColumn::make('email')
-                    ->label('Email')
-                    ->searchable(),
+                // Tables\Columns\TextColumn::make('email')
+                //     ->label('Email')
+                //     ->searchable(),
 
                 Tables\Columns\TextColumn::make('ticket_no')
                     ->label('Ticket No')
                     ->sortable(),
 
-                Tables\Columns\BadgeColumn::make('payment_status')
-                    ->label('Payment Status')
-                    ->colors([
-                        'success' => 'Paid',
-                        'warning' => 'Pending',
-                        'danger'  => 'Failed',
-                    ])
+                Tables\Columns\TextColumn::make('amount')
+                    ->money('inr', true)
                     ->sortable(),
+
+                // Tables\Columns\TextColumn::make('draw_date')
+                //     ->date('d M Y')
+                //     ->sortable(),
+
+                // ==== status column: format + badge + colors ====
+                Tables\Columns\TextColumn::make('status')
+                    ->label('Payment Status')
+                    ->badge()
+                    ->formatStateUsing(fn ($state) => match ((int) $state) {
+                        0 => 'Payment Transfer',
+                        1 => 'Payment Pending',
+                        2 => 'Transaction Successful',
+                        default => 'Unknown',
+                    })
+                    ->colors([
+                        // color => callback
+                        'primary' => fn ($state) => (int) $state === 0,
+                        'warning' => fn ($state) => (int) $state === 1,
+                        'success' => fn ($state) => (int) $state === 2,
+                    ]),
             ])
             ->filters([
-                // Example: filter by status
-                Tables\Filters\SelectFilter::make('payment_status')
+                Tables\Filters\SelectFilter::make('status')
+                    ->label('Status')
                     ->options([
-                        'Paid' => 'Paid',
-                        'Pending' => 'Pending',
-                        'Failed' => 'Failed',
+                        0 => 'Payment Transfer',
+                        1 => 'Payment Pending',
+                        2 => 'Transaction Successful',
                     ]),
             ])
             ->recordActions([

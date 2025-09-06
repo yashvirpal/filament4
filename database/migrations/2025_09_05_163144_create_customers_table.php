@@ -16,8 +16,11 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->string('mobile')->unique();
             $table->string('email')->unique();
+            $table->decimal('amount', 12, 2)->nullable(); 
+            $table->date('draw_date')->nullable(); 
             $table->string('ticket_no')->nullable();
-            $table->enum('payment_status', ['Paid', 'Pending', 'Failed'])->default('Pending');
+            $table->string('status_desc')->nullable();
+            $table->tinyInteger('status')->nullable()->comment('0 = Payment Pending, 1 = Payment Transfer, 2 = Transaction Successful');
             $table->timestamps();
         });
     }

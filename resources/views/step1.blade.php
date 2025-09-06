@@ -8,7 +8,7 @@
 
     <!-- Winner Name -->
     <p class="mt-4 text-xl font-bold text-gray-800">
-        Mr. <span class="uppercase">{{ $customer->name }}</span>
+        <span class="uppercase">{{ $customer->name }}</span>
     </p>
 
     <!-- Prize -->
@@ -18,7 +18,7 @@
         for
     </p>
     <p class="text-2xl font-extrabold text-indigo-700 mt-1">
-        ₹ {{ number_format($customer->prize_amount??1000, 2) }} /-
+        ₹ {{ number_format($customer->amount??00, 2) }} /-
     </p>
 
     <!-- Ticket Info -->

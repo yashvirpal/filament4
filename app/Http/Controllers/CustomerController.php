@@ -40,48 +40,12 @@ class CustomerController extends Controller
         $customerId = session('customer_id');
 
         if (!$customerId) {
-            return redirect()->route('customer.login')
+            return redirect()->route('customer.home')
                 ->withErrors(['mobile' => 'Please login first']);
         }
 
         $customer = Customer::findOrFail($customerId);
 
         return view('step1', compact('customer'));
-    }
-    public function loginn(Request $request)
-    {
-        $request->validate([
-            'mobile' => 'required',
-            'ticket_no' => 'required',
-        ]);
-
-        $customer = Customer::where('mobile', $request->mobile)
-            ->where('ticket_no', $request->ticket_no)
-            ->first();
-
-        if ($customer) {
-            session(['customer_id' => $customer->id]);
-
-            if ($request->ajax()) {
-                return response()->json([
-                    'success' => true,
-                    'message' => 'Welcome back ' . $customer->name . '!',
-                    'redirect' => route('customer.dashboard'),
-                ]);
-            }
-
-            return redirect()->route('customer.dashboard');
-        }
-
-        if ($request->ajax()) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Invalid Mobile or Ticket Number',
-            ], 422);
-        }
-
-        return back()->withErrors([
-            'mobile' => 'Invalid Mobile or Ticket Number',
-        ]);
     }
 }

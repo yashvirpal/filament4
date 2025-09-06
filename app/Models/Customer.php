@@ -14,6 +14,9 @@ class Customer extends Model
         'mobile',
         'email',
         'ticket_no',
-        'payment_status',
+        'amount',
+        'draw_date',
+        'status',
+        'status_desc',
     ];
 }

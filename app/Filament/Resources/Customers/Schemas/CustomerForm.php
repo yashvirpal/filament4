@@ -33,15 +33,29 @@ class CustomerForm
                     ->required()
                     ->maxLength(50),
 
-                Forms\Components\Select::make('payment_status')
+                Forms\Components\TextInput::make('amount')
+                    ->numeric()
+                    ->label('Amount')
+                    ->prefix('₹')
+                    ->step('0.01'),
+
+                Forms\Components\DatePicker::make('draw_date')
+                    ->label('Draw Date')
+                    ->native(false),
+
+                Forms\Components\Select::make('status')
                     ->label('Payment Status')
                     ->options([
-                        'Paid'    => 'Paid',
-                        'Pending' => 'Pending',
-                        'Failed'  => 'Failed',
+                        0 => 'Payment Transfer',
+                        1 => 'Payment Pending',
+                        2 => 'Transaction Successful',
                     ])
-                    ->default('Pending')
-                    ->required(),
+                    ->nullable()
+                    ->native(false),
+                Forms\Components\TextInput::make('status_desc')
+                    ->label('Status Description'),
+                   // ->required()
+                   // ->maxLength(50),
             ]);
     }
 }
