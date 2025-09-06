@@ -3,15 +3,19 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Winner Announcement</title>
+    <title>Kerala Lottery</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 </head>
 
 <body class="bg-gray-100 min-h-screen">
 
     <!-- Navbar -->
     <nav class="bg-indigo-600 text-white px-6 py-3 flex justify-between">
-        <div class="font-bold text-lg">🎟️ MegaJackpot</div>
+        <div class="flex justify-center mb-4">
+            <img src="{{ asset('images/logo.jpg') }}" alt="Logo" class="h-16 w-auto">
+        </div>
+
         <div class="space-x-6">
             <a href="{{ route('customer.home') }}" class="hover:underline">Home</a>
             <a href="{{ route('customer.ad') }}" class="hover:underline">Account Details</a>
@@ -75,7 +79,7 @@
     </div>
     <!-- Footer -->
     <footer class="bg-indigo-600 text-white text-center py-3 mt-3">
-        <p class="text-sm">&copy; {{ date('Y') }} MegaJackpot. All rights reserved.</p>
+        <p class="text-sm">&copy; {{ date('Y') }} Kerala Lottery. All rights reserved.</p>
         <!-- <p class="text-xs">Designed & Developed by <span class="font-semibold">YourCompany</span></p> -->
     </footer>
 </body>

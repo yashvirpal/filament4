@@ -44,7 +44,7 @@ class CustomerForm
                     ->native(false),
 
                 Forms\Components\Select::make('status')
-                    ->label('Payment Status')
+                    ->label('Status')
                     ->options([
                         0 => 'Payment Transfer',
                         1 => 'Payment Pending',

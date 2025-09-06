@@ -41,7 +41,7 @@ class CustomersTable
 
                 // ==== status column: format + badge + colors ====
                 Tables\Columns\TextColumn::make('status')
-                    ->label('Payment Status')
+                    ->label('Status')
                     ->badge()
                     ->formatStateUsing(fn ($state) => match ((int) $state) {
                         0 => 'Payment Transfer',

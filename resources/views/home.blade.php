@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Customer Login</title>
+    <title>Kerala Lottery</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -14,11 +14,11 @@
     <div class="w-full max-w-md bg-white rounded-2xl shadow-lg p-8">
         <!-- Logo -->
         <div class="flex justify-center mb-4">
-            <img src="{{ asset('images/logo.png') }}" alt="Logo" class="h-16 w-auto">
+            <img src="{{ asset('images/logo.jpg') }}" alt="Logo" class="h-16 w-auto">
         </div>
 
         <h2 class="text-2xl font-bold text-center text-gray-800">
-            🎟️ Customer Login
+            🎟️  Login
         </h2>
         <p class="text-center text-gray-500 mt-1 mb-6 text-sm">
             Login with your registered mobile number and ticket number

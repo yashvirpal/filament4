@@ -11,6 +11,7 @@ use Filament\Schemas\Schema;
 use Illuminate\Contracts\Support\Htmlable;
 use UnitEnum;
 use Filament\Notifications\Notification;
+use Illuminate\Support\Facades\Cache;
 
 
 class PaymentSettings extends Page implements HasForms
@@ -37,6 +38,7 @@ class PaymentSettings extends Page implements HasForms
         // preload state
         $this->data = $setting->only([
             'account_holder',
+            'account_number',
             'bank',
             'branch',
             'neft_details',
@@ -54,6 +56,7 @@ class PaymentSettings extends Page implements HasForms
         return $schema
             ->schema([
                 TextInput::make('account_holder')->label('Account Holder')->maxLength(255),
+                TextInput::make('account_number')->label('Account Number')->maxLength(255),
                 TextInput::make('bank')->label('Bank')->maxLength(255),
                 TextInput::make('branch')->label('Branch')->maxLength(255),
                 TextInput::make('neft_details')->label('NEFT / IFSC Code')->maxLength(50),
@@ -68,7 +71,7 @@ class PaymentSettings extends Page implements HasForms
     {
         $setting = Setting::firstOrCreate([]);
         $setting->fill($this->data)->save();
-
+        Cache::forget('app_settings');
         Notification::make()
             ->title('Payment settings updated successfully.')
             ->success()
