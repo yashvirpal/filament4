@@ -44,7 +44,7 @@ class CustomersTable
                     ->label('Status')
                     ->badge()
                     ->formatStateUsing(fn ($state) => match ((int) $state) {
-                        0 => 'Payment Transfer',
+                        0 => 'Payment Debited',
                         1 => 'Payment Pending',
                         2 => 'Transaction Successful',
                         default => 'Unknown',
@@ -60,7 +60,7 @@ class CustomersTable
                 Tables\Filters\SelectFilter::make('status')
                     ->label('Status')
                     ->options([
-                        0 => 'Payment Transfer',
+                        0 => 'Payment Debited',
                         1 => 'Payment Pending',
                         2 => 'Transaction Successful',
                     ]),

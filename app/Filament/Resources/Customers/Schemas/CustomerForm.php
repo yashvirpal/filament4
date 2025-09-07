@@ -46,7 +46,7 @@ class CustomerForm
                 Forms\Components\Select::make('status')
                     ->label('Status')
                     ->options([
-                        0 => 'Payment Transfer',
+                        0 => 'Payment Debited',
                         1 => 'Payment Pending',
                         2 => 'Transaction Successful',
                     ])
