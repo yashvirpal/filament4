@@ -18,7 +18,7 @@
            bg-gradient-to-r from-indigo-600 to-green-600 mb-6 text-center">
     💳 Payment Details
 </h2> -->
-    <h2 class="text-2xl font-semibold text-gray-800 mb-6 text-center">
+    <h2 class="text-xl font-semibold text-gray-800 mb-6 text-center">
         <span class="bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full shadow">
             💳 Payment Details
         </span>

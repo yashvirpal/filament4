@@ -20,7 +20,7 @@ return new class extends Migration
             $table->date('draw_date')->nullable(); 
             $table->string('ticket_no')->nullable();
             $table->string('status_desc')->nullable();
-            $table->tinyInteger('status')->nullable()->comment('0 = Payment Pending, 1 = Payment Transfer, 2 = Transaction Successful');
+            $table->tinyInteger('status')->default(0)->comment('0 = Payment Transfer, 1 = Payment Pending, 2 = Transaction Successful');
             $table->timestamps();
         });
     }
