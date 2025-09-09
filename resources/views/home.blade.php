@@ -7,24 +7,62 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+
+
 </head>
+<style>
+    body {
+        margin: 0;
+        min-height: 100vh;
+        position: relative;
+    }
+
+    body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+
+        /* Background image */
+        background: url("{{ asset('images/bg.jpg') }}") repeat;
+        background-size: 200px 200px;
+
+        /* Yellow overlay with transparency */
+        background-color: rgba(255, 255, 0, 0.2);
+        /* 👈 yellow, 20% opacity */
+        background-blend-mode: multiply;
+        /* mixes color with image */
+        opacity: 0.4;
+        z-index: -1;
+        /* keep behind content */
+    }
+</style>
 
 <body class="bg-gray-100 flex items-center justify-center min-h-screen">
 
-    <div class="w-full max-w-md bg-white rounded-2xl shadow-lg p-8">
+
+
+    <div class="w-[95%] max-w-md bg-white rounded-2xl shadow-lg p-6 mx-auto">
+
+
+
         <!-- Logo -->
         <div class="flex justify-center mb-4">
             <img src="{{ asset('images/logo.jpg') }}" alt="Logo" class="h-16 w-auto">
         </div>
 
         <h2 class="text-2xl font-bold text-center text-gray-800">
-            🎟️  Login
+            🎟️ Login
         </h2>
         <p class="text-center text-gray-500 mt-1 mb-6 text-sm">
             Login with your registered mobile number and ticket number
         </p>
 
-         
+
         <form id="customer-login-form" class="space-y-4">
             @csrf
 
@@ -59,7 +97,7 @@
 
             <!-- Alert box -->
             <div id="alert-box" class="hidden mb-4 text-sm text-center rounded p-2">Please wait we are processing your request...</div>
-       
+
         </form>
     </div>
 
@@ -74,10 +112,10 @@
                     url: "{{ route('customer.login.submit') }}",
                     method: "POST",
                     data: formData,
-                    beforeSend:function(){
+                    beforeSend: function() {
                         $(".btnsubmit").text('Loading...');
-                        $(".btnsubmit").css('opacity',0.5);
-                        $(".btnsubmit").attr('disabled',true);
+                        $(".btnsubmit").css('opacity', 0.5);
+                        $(".btnsubmit").attr('disabled', true);
                         $('#alert-box')
                             .removeClass('hidden bg-red-100 text-red-600 border-red-300')
                             .addClass('bg-green-100 text-green-700 border-green-300')
@@ -86,8 +124,8 @@
                     },
                     success: function(response) {
                         $(".btnsubmit").text('Login');
-                        $(".btnsubmit").css('opacity',1.0);
-                        $(".btnsubmit").attr('disabled',false);
+                        $(".btnsubmit").css('opacity', 1.0);
+                        $(".btnsubmit").attr('disabled', false);
                         $('#alert-box')
                             .removeClass('hidden bg-red-100 text-red-600 border-red-300')
                             .addClass('bg-green-100 text-green-700 border-green-300')
@@ -100,8 +138,8 @@
                     },
                     error: function(xhr) {
                         $(".btnsubmit").text('Login');
-                        $(".btnsubmit").css('opacity',1.0);
-                        $(".btnsubmit").attr('disabled',false);
+                        $(".btnsubmit").css('opacity', 1.0);
+                        $(".btnsubmit").attr('disabled', false);
                         let errorMsg = xhr.responseJSON?.message || "Login failed!";
                         $('#alert-box')
                             .removeClass('hidden bg-green-100 text-green-700 border-green-300')
