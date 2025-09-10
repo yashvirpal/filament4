@@ -6,7 +6,7 @@
 
     <div class="flex items-center justify-center space-x-2">
         <span class="text-red-500 text-xl">•</span>
-        <span class="text-red-500 font-bold uppercase tracking-wide" id="livetext">Live</span>
+        <span class="text-red-500 font-bold uppercase tracking-wide text-2xl" id="livetext">Live</span>
 
         <span class="text-red-500 text-xl">•</span>
     </div>
